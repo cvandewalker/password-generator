@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Password Generator</a>
+          </nav>
+    </header>
+    <div class="container">
+      <h2>Generate a Password</h2>
+      <textarea
+        readonly
+        id="password"
+        placeholder="Your Secure Password"
+        aria-label="Generated Password"
+      ></textarea>
+      <button id="generate" onclick="generate()">Generate Password</button>
+      <button id="copy" onclick="copyPassword()">
+        Copy to Clipboard
+      </button>
+    </div>
+
+    <script type="text/javascript">
+    
+   var length = prompt("length of password? (Must be between 8 and 128 characters.");
+   
+   if (length > 8 && length < 128) {
+      alert("Your password will be " + length + " characters long!");
+   var hasSymbols = confirm("would you like symbols");
+   var hasNumbers = confirm("would you like numbers");
+   var hasLower = confirm("would you like lowercase letters?");
+   var hasUpper = confirm("would you like uppercase letters?");   
+    } else {
+      alert("BETWEEN 8 AND 128 CHARACTERS!");
+      location.reload();
+    }
+   
+  
+  console.log(hasSymbols);
+  
+    if (hasSymbols) {
+      hasSymbols = "!@#$%^&*()";
+    } else {
+      hasSymbols = ""
+    }
+
+    if (hasNumbers) {
+      hasNumbers = "0123456789";
+    } else {
+      hasNumbers = ""
+    }
+
+    if (hasLower) {
+      hasLower = "abcdefghijklmnopqrstuvwxyz";
+    } else {
+      hasLower = ""
+    }
+
+    if (hasUpper) {
+      hasUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    } else {
+      hasUpper = ""
+    }
+
+    function generate() {
+       var values = hasSymbols + hasNumbers + hasLower + hasUpper;
+       var password = "";
+
+
+       for (var i = 0; i < length; i++) {
+         password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length -1)));
+       }
+
+       document.getElementById("password").value = password;
+    }
+
+    function copyPassword() {
+      document.getElementById("password").select();
+
+      document.execCommand("Copy");
+
+      alert( password.value + " copied to clipboard!")
+
+
+    }
+
+    
+
+      
+    </script>
+  </body>
+</html>

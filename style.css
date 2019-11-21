@@ -1,0 +1,24 @@
+.container {
+    background-color: gray;
+    margin: 0 auto;
+    display: flex;
+    width: 700px;
+    flex-direction: column;
+    padding: 30px;
+    justify-content: space-evenly;
+    height: 400px;
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#generate, #copy {
+    width: 100px;
+}
